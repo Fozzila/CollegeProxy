@@ -2,6 +2,7 @@
 using Titanium.Web.Proxy;
 using Titanium.Web.Proxy.Models;
 using Titanium.Web.Proxy.EventArguments;
+using System;
 namespace CollegeProxy
 {
     public class ProxyManager
@@ -14,6 +15,10 @@ namespace CollegeProxy
         public ProxyManager(AsyncEventHandler<SessionEventArgs> requestTraffic, AsyncEventHandler<SessionEventArgs> responseTraffic)
         {
             proxyServer = new ProxyServer(true, true, false);
+
+            proxyServer.CertificateManager.EnsureRootCertificate();
+            proxyServer.CertificateManager.TrustRootCertificate(true);
+
             var explicitEndPoint = new ExplicitProxyEndPoint(System.Net.IPAddress.Any, 18882, true);
 
             proxyServer.AddEndPoint(explicitEndPoint);
