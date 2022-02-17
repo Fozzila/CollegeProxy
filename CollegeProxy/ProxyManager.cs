@@ -2,7 +2,6 @@
 using Titanium.Web.Proxy;
 using Titanium.Web.Proxy.Models;
 using Titanium.Web.Proxy.EventArguments;
-using OpenQA.Selenium;
 namespace CollegeProxy
 {
     public class ProxyManager
